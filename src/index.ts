@@ -7,15 +7,28 @@ const sharp = require('sharp');
 const app = express();
 const port = 3000;
 // app.use('/api', routes);
+app.use(express.static('public'));
+app.use('/images', express.static('images'));
 
 
-async function make_image(width, height, image) {
-    sharp(image)
+// return fs.promises.readFile(configFile, helpers.utf8Encoding)
+//     .then(JSON.parse);
+
+
+
+function make_image(width: any, height: any, name: any) {
+    sharp(`../public/images/${name}`)
         .resize(width, height)
-        .toFile('output.jpg', function (err) {
+        .toFile(`../public/cached/${name}_${height}_${width}`, function (err: string) {
             // output.jpg is a 300 pixels wide and 200 pixels high image
             // containing a scaled and cropped version of input.jpg
+            console.log(err);
         });
+}
+
+function get_cached_image(name: string) {
+    fspromises.access(`/public/images/${name}`).then();
+
 }
 
 app.get('/api/images', (req, res) => {
