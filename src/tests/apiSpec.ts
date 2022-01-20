@@ -4,8 +4,8 @@ interface Json {
 }
 interface JsonArray extends Array<string | number | boolean | Date | Json | JsonArray> { }
 
-async function get_image() {
-    await fetch('http://127.0.0.1:3000/api/images?filename=icelandwaterfall&width=200&height=200', {
+function get_image() {
+    return fetch('http://localhost:3000/api/images?filename=icelandwaterfall&width=200&height=200', {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",
@@ -17,8 +17,9 @@ async function get_image() {
     );
 }
 
-describe("test suite ", () => {
-    it("test ", () => {
+describe("test if the endpoint work", () => {
+    it("test if the endpoint work", () => {
+        console.log(get_image);
         expect(get_image).toEqual(200);
     });
 });
