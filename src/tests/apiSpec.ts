@@ -5,7 +5,7 @@ interface Json {
 interface JsonArray extends Array<string | number | boolean | Date | Json | JsonArray> { }
 
 function get_image() {
-    return fetch('http://localhost:3000/api/images?filename=icelandwaterfall&width=200&height=200', {
+    return fetch('http://localhost:3000/api/images?filename=icelandwaterfall&imageWidth=200&imageHeight=200', {
         method: 'GET',
         headers: {
             "Content-Type": "application/json",
