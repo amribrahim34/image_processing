@@ -1,25 +1,29 @@
+// const request = require('supertest');
+// const assert = require('assert');
+// const express = require('express');
+import { make_image } from "../utilities"
+
 // creating type for json
 interface Json {
     [x: string]: string | number | boolean | Date | Json | JsonArray;
 }
 interface JsonArray extends Array<string | number | boolean | Date | Json | JsonArray> { }
 
-function get_image() {
-    return fetch('http://localhost:3000/api/images?filename=icelandwaterfall&imageWidth=200&imageHeight=200', {
-        method: 'GET',
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then(
-        (response) => {
-            return response.status;
-        }
-    );
-}
+// const app = express();
+// app.get('/test', (req: any, res: any) => {
+//     res.status(200).json({ name: 'john' });
+// })
 
-describe("test if the endpoint work", () => {
-    it("test if the endpoint work", () => {
-        console.log(get_image);
-        expect(get_image).toEqual(200);
+describe("make image function tests - ", () => {
+    it("test if the function work", () => {
+        expect(make_image(200, 200, "icelandwaterfall")).toBe(true);
     });
+
+    it("test if the function dont work", () => {
+        expect(make_image(200, 200, "sdasdasd")).not.toBe(true);
+    });
+
+    // it("test if the endpoint work", () => {
+    //     return request(app).get('/test').expect(200);
+    // });
 });

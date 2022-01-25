@@ -10,8 +10,13 @@ images.get('/', (req, res) => {
     let filename = String(req.query.filename);
     let path: string = `http://localhost:${port}/cached/${filename}_${height}_${width}.jpg`;
     let image = `<img src="${path}" alt="${filename}">`;
+    try {
+        make_image(width, height, filename);
+    } catch (error) {
+        res.sendStatus(502);
+    }
     let oprtn = make_image(width, height, filename);
-    if (oprtn == 'success' || oprtn == true) {
+    if (oprtn == true) {
         res.status(200);
         res.send(image);
     } else {
