@@ -2,10 +2,14 @@ import { make_image } from "../utilities"
 
 describe("make image function tests - ", () => {
     it("test if the function work", () => {
-        expect(make_image(200, 200, "icelandwaterfall")).toBe(true);
+        make_image(200, 200, "icelandwaterfall").then((out) => {
+            expect(out).toBe(true);
+        })
     });
 
     it("test if the function dont work", () => {
-        expect(make_image(200, 200, "sdasdasd")).not.toBe(true);
+        make_image(200, 200, "sdasdasd").then((out) => {
+            expect(out).not.toBe(true);
+        })
     });
 });

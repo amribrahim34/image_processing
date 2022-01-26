@@ -1,5 +1,9 @@
 import express from 'express';
 import { make_image } from '../../utilities';
+import fs from "fs";
+
+const fsPromises = fs.promises;
+
 
 const port = 3000;
 
@@ -10,18 +14,13 @@ images.get('/', (req, res) => {
     let filename = String(req.query.filename);
     let path: string = `http://localhost:${port}/cached/${filename}_${height}_${width}.jpg`;
     let image = `<img src="${path}" alt="${filename}">`;
-    try {
-        make_image(width, height, filename);
-    } catch (error) {
-        res.sendStatus(502);
-    }
-    let oprtn = make_image(width, height, filename);
-    if (oprtn == true) {
+    make_image(width, height, filename).then((img) => {
         res.status(200);
         res.send(image);
-    } else {
-        res.send("error occurred");
-    }
+    })
+        .catch((error) => {
+            res.send(error)
+        })
 });
 
 export default images;
