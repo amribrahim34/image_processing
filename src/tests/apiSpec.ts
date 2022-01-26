@@ -24,11 +24,11 @@ describe("test API endpoints ", () => {
 
   it("test that / return code 200", async () => {
     const res = await request(app).get("/");
-    expect(res.statusCode).toBe(200);
+    expect(res.status).toBe(200);
   });
 
   it("test the actual API return code 200", async () => {
     const res = await request(app).get("/api/images?filename=fjord&width=200&height=300");
-    expect(res.statusCode).toBe(200);
+    expect(res.status).toBe(200);
   });
 })

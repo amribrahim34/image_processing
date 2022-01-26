@@ -4,7 +4,7 @@ import { make_image } from "../../utilities";
 const port = 3000;
 
 const images = express.Router();
-images.get("/", (req, res): void => {
+images.get("/", (req: express.Request, res: express.Response): void => {
   const width = Number(req.query.width);
   const height = Number(req.query.height);
   const filename = String(req.query.filename);

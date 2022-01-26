@@ -10,7 +10,7 @@ app.use("/cached", express.static("cached"));
 
 app.use("/api", routes);
 
-app.get("/", (req: any, res: any): void => {
+app.get("/", (req: express.Request, res: express.Response): void => {
   res.status(200).send("Hello World!");
 });
 
