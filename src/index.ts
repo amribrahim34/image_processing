@@ -10,12 +10,11 @@ app.use("/cached", express.static("cached"));
 app.use("/api", routes);
 
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+  res.send("Hello World!");
 });
 
 app.listen(port, () => {
-    console.log(`server started on http://localhost:${port}`);
+  console.log(`server started on http://localhost:${port}`);
 });
-
 
 export default app;

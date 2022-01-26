@@ -7,8 +7,8 @@
     "build": "npx tsc",
     "test": " jasmine",
     "start": "nodemon src/index.ts",
-    "lint": "eslint --ext .ts",
-    "prettier": "npx prettier --write",
+    "lint": "eslint --fix . --ext .ts",
+    "prettier": "prettier --write src/**/*.ts ",
     "jest": "jest",
     "tsc": "tsc"
   },
